@@ -52,3 +52,32 @@ export class AppModule implements NestModule {
 }
 ```
 ---
+
+
+### Create service & controller
+```bash
+nest g service ev
+```
+```bash
+nest g controller ev
+```
+---
+
+### `ev.service.ts`
+```bash
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config'
+
+@Injectable()
+export class EvService {
+    constructor(private configService: ConfigService) {}
+
+    getDbUrl() {
+        return this.configService.get<string>('DATABASE_URL');
+    }
+}
+```
+---
+
+
+##
