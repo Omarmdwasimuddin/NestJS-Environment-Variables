@@ -61,7 +61,7 @@ nest g service ev
 ```bash
 nest g controller ev
 ```
----
+##
 
 ### `ev.service.ts`
 ```bash
@@ -80,4 +80,18 @@ export class EvService {
 ---
 
 
-##
+### `ev.controller.ts`
+```bash
+import { Controller, Get } from '@nestjs/common';
+import { EvService } from './ev.service';
+
+@Controller('ev')
+export class EvController {
+    constructor(private readonly evService: EvService) {}
+    @Get()
+    getUrl() {
+        return this.evService.getDbUrl();
+    }
+}
+```
+---
